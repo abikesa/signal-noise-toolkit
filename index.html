@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal Noise Toolkit: 5-Stack of Distributed Flourishing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e0e6ed;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #fef65b);
+            border-radius: 2px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #b8c5d1;
+            font-weight: 300;
+        }
+
+        .spiral-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .layer {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .layer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .layer:hover::before {
+            left: 100%;
+        }
+
+        .layer:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .layer-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .layer-emoji {
+            font-size: 2.5rem;
+            margin-right: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .layer-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .layer-subtitle {
+            font-size: 1rem;
+            color: #96ceb4;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .axis-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .axis {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border-left: 4px solid;
+        }
+
+        .ubuntu-axis {
+            border-left-color: #ff6b6b;
+        }
+
+        .agentsociety-axis {
+            border-left-color: #4ecdc4;
+        }
+
+        .axis-title {
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .ubuntu-axis .axis-title {
+            color: #ff8a8a;
+        }
+
+        .agentsociety-axis .axis-title {
+            color: #6ee6dd;
+        }
+
+        .axis-content {
+            color: #d1d8e0;
+            line-height: 1.6;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        .epistemic-mode {
+            background: linear-gradient(135deg, #45b7d1, #96ceb4);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            color: #0f0f23;
+            font-weight: 600;
+        }
+
+        .neurocosmic-echo {
+            color: #fef65b;
+            font-weight: 500;
+        }
+
+        .summary-section {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .summary-title {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .canonical-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .canonical-table th,
+        .canonical-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .canonical-table th {
+            background: rgba(255, 255, 255, 0.05);
+            font-weight: 600;
+            color: #96ceb4;
+        }
+
+        .canonical-table tr:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .tldr {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border: 1px solid rgba(78, 205, 196, 0.3);
+        }
+
+        .tldr-title {
+            font-size: 1.3rem;
+            color: #4ecdc4;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .connection-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .spiral-indicator {
+            position: fixed;
+            top: 50%;
+            right: 2rem;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .spiral-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .spiral-dot.active {
+            background: #4ecdc4;
+            transform: scale(1.5);
+        }
+
+        @media (max-width: 768px) {
+            .axis-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .spiral-indicator {
+                display: none;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .layer-emoji {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 Signal Noise Toolkit</h1>
+            <div class="subtitle">5-Stack of Distributed Flourishing (Ubuntu × AgentSociety Canon)</div>
+        </div>
+
+        <div class="spiral-container">
+            <div class="connection-lines">
+                <svg width="100%" height="100%" style="position: absolute;">
+                    <defs>
+                        <linearGradient id="spiralGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:0.3" />
+                            <stop offset="100%" style="stop-color:#4ecdc4;stop-opacity:0.3" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+
+            <div class="layer" data-layer="1">
+                <div class="layer-header">
+                    <div class="layer-emoji">🌊</div>
+                    <div>
+                        <div class="layer-title">Nonself / Heritage</div>
+                        <div class="layer-subtitle">The baby isn't "yours" alone. Intelligence is a signal-noise gradient across lineage.</div>
+                    </div>
+                </div>
+                
+                <div class="axis-container">
+                    <div class="axis ubuntu-axis">
+                        <div class="axis-title">Ubuntu View</div>
+                        <div class="axis-content">
+                            Kinship networks, ancestral obligations, and village-scale logistics. The signal of care begins here—not with ownership, but origin.
+                        </div>
+                    </div>
+                    <div class="axis agentsociety-axis">
+                        <div class="axis-title">AgentSociety View</div>
+                        <div class="axis-content">
+                            The modeling lineage (Turing → Schelling → Epstein → LLMs) forms the Heritage Stack—dynamic, compounding code. Society isn't theorized; it's simulated.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="meta-info">
+                    <div class="epistemic-mode">🧬 Origin</div>
+                    <div class="neurocosmic-echo">Molecular / Ancestral</div>
+                </div>
+            </div>
+
+            <div class="layer" data-layer="2">
+                <div class="layer-header">
+                    <div class="layer-emoji">❤️</div>
+                    <div>
+                        <div class="layer-title">Boundary / Commons</div>
+                        <div class="layer-subtitle">America draws hard lines. Commons are computational petri dishes.</div>
+                    </div>
+                </div>
+                
+                <div class="axis-container">
+                    <div class="axis ubuntu-axis">
+                        <div class="axis-title">Ubuntu View</div>
+                        <div class="axis-content">
+                            The tragedy isn't the commons—it's the privatization of the sacred. Boundaries block reciprocity.
+                        </div>
+                    </div>
+                    <div class="axis agentsociety-axis">
+                        <div class="axis-title">AgentSociety View</div>
+                        <div class="axis-content">
+                            The data is the drama. The model simulates 10,000 agents in a shared symbolic world, forming emergent commons.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="meta-info">
+                    <div class="epistemic-mode">🌐 Co-existence</div>
+                    <div class="neurocosmic-echo">Cellular / Interpersonal</div>
+                </div>
+            </div>
+
+            <div class="layer" data-layer="3">
+                <div class="layer-header">
+                    <div class="layer-emoji">🌀</div>
+                    <div>
+                        <div class="layer-title">Negotiation / Faustian Mirror</div>
+                        <div class="layer-subtitle">We justify care with market logic. To simulate society is to risk mistaking model for world.</div>
+                    </div>
+                </div>
+                
+                <div class="axis-container">
+                    <div class="axis ubuntu-axis">
+                        <div class="axis-title">Ubuntu View</div>
+                        <div class="axis-content">
+                            Rationalization of injustice as "staffing," "ratios," etc.—when it's just austerity in disguise. The system gaslights its own failures.
+                        </div>
+                    </div>
+                    <div class="axis agentsociety-axis">
+                        <div class="axis-title">AgentSociety View</div>
+                        <div class="axis-content">
+                            We walk backward through the mirror of simulation. Faustian danger: to simulate is to believe the illusion.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="meta-info">
+                    <div class="epistemic-mode">🧭 Critical Reflection</div>
+                    <div class="neurocosmic-echo">Synaptic / Ideological</div>
+                </div>
+            </div>
+
+            <div class="layer" data-layer="4">
+                <div class="layer-header">
+                    <div class="layer-emoji">🐬</div>
+                    <div>
+                        <div class="layer-title">Alliance / Identity</div>
+                        <div class="layer-subtitle">Co-ops, intergenerational homes, mutual aid: these are the cracks of signal. How do we play? Via identity, polarity, alliance.</div>
+                    </div>
+                </div>
+                
+                <div class="axis-container">
+                    <div class="axis ubuntu-axis">
+                        <div class="axis-title">Ubuntu View</div>
+                        <div class="axis-content">
+                            The frontline is communal. Identity isn't just who you are, but who you align with in care.
+                        </div>
+                    </div>
+                    <div class="axis agentsociety-axis">
+                        <div class="axis-title">AgentSociety View</div>
+                        <div class="axis-content">
+                            Simulated identity fractures reveal where real-world alliances form—or fail. Polarization is both signal and call to redesign.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="meta-info">
+                    <div class="epistemic-mode">🧩 Play & Alignment</div>
+                    <div class="neurocosmic-echo">Axonal / Political</div>
+                </div>
+            </div>
+
+            <div class="layer" data-layer="5">
+                <div class="layer-header">
+                    <div class="layer-emoji">🔁</div>
+                    <div>
+                        <div class="layer-title">Flourish / Authentication</div>
+                        <div class="layer-subtitle">If you do it for the least of these... you're doing it for the whole. AgentSociety loops its simulations back to empirical data. Posture is everything.</div>
+                    </div>
+                </div>
+                
+                <div class="axis-container">
+                    <div class="axis ubuntu-axis">
+                        <div class="axis-title">Ubuntu View</div>
+                        <div class="axis-content">
+                            True flourishing is collective and reciprocal. That's the spiral's secret: we rise only if all rise.
+                        </div>
+                    </div>
+                    <div class="axis agentsociety-axis">
+                        <div class="axis-title">AgentSociety View</div>
+                        <div class="axis-content">
+                            Model output is validated against reality. Posture = humility + feedback loop. Flourishing isn't declared—it's earned through recursive alignment.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="meta-info">
+                    <div class="epistemic-mode">♻️ Feedback & Return</div>
+                    <div class="neurocosmic-echo">Symbolic / Ethical</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="summary-section">
+            <div class="summary-title">🔁 Canonical Spiral Summary</div>
+            
+            <table class="canonical-table">
+                <thead>
+                    <tr>
+                        <th>Layer</th>
+                        <th>Ubuntu Axis</th>
+                        <th>AgentSociety Axis</th>
+                        <th>Signal Noise Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>🌊</td>
+                        <td>Nonself</td>
+                        <td>Heritage (Code Lineage)</td>
+                        <td>Origin / Signal Source</td>
+                    </tr>
+                    <tr>
+                        <td>❤️</td>
+                        <td>Boundary</td>
+                        <td>Commons (Simulated Society)</td>
+                        <td>Structure / Shared Data</td>
+                    </tr>
+                    <tr>
+                        <td>🌀</td>
+                        <td>Negotiation</td>
+                        <td>Faustian Mirror (Model vs Real)</td>
+                        <td>Conflict / Simulation</td>
+                    </tr>
+                    <tr>
+                        <td>🐬</td>
+                        <td>Alliance</td>
+                        <td>Identity (Agent Play)</td>
+                        <td>Interaction / Formation</td>
+                    </tr>
+                    <tr>
+                        <td>🔁</td>
+                        <td>Flourish</td>
+                        <td>Authentication (Empirical Loop)</td>
+                        <td>Resolution / Return</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="tldr">
+                <div class="tldr-title">🌐 TL;DR:</div>
+                <div>
+                    This isn't dualism—it's dialectic. Ubuntu is the ethic, AgentSociety is the simulation. The <strong>spiral is real</strong>, and it's tightening. Distributed Flourishing isn't an ideal. It's infrastructure.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="spiral-indicator">
+        <div class="spiral-dot active" data-target="1"></div>
+        <div class="spiral-dot" data-target="2"></div>
+        <div class="spiral-dot" data-target="3"></div>
+        <div class="spiral-dot" data-target="4"></div>
+        <div class="spiral-dot" data-target="5"></div>
+    </div>
+
+    <script>
+        // Smooth scrolling and spiral navigation
+        const layers = document.querySelectorAll('.layer');
+        const spiralDots = document.querySelectorAll('.spiral-dot');
+        
+        // Add intersection observer for spiral navigation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const layerNum = entry.target.dataset.layer;
+                    spiralDots.forEach(dot => {
+                        dot.classList.remove('active');
+                        if (dot.dataset.target === layerNum) {
+                            dot.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        layers.forEach(layer => observer.observe(layer));
+
+        // Spiral dot navigation
+        spiralDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const targetLayer = document.querySelector(`[data-layer="${dot.dataset.target}"]`);
+                targetLayer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        });
+
+        // Enhanced layer interactions
+        layers.forEach((layer, index) => {
+            layer.addEventListener('mouseenter', () => {
+                // Add subtle glow effect to connected layers
+                const currentIndex = parseInt(layer.dataset.layer);
+                layers.forEach((otherLayer, otherIndex) => {
+                    const otherLayerIndex = parseInt(otherLayer.dataset.layer);
+                    if (Math.abs(currentIndex - otherLayerIndex) === 1) {
+                        otherLayer.style.opacity = '0.7';
+                    } else if (otherLayerIndex !== currentIndex) {
+                        otherLayer.style.opacity = '0.4';
+                    }
+                });
+            });
+            
+            layer.addEventListener('mouseleave', () => {
+                layers.forEach(otherLayer => {
+                    otherLayer.style.opacity = '1';
+                });
+            });
+        });
+
+        // Dynamic connection lines (spiral visualization)
+        function drawSpiral() {
+            const svg = document.querySelector('.connection-lines svg');
+            const containerHeight = document.querySelector('.spiral-container').offsetHeight;
+            svg.setAttribute('height', containerHeight);
+            
+            // Create spiral path connecting all layers
+            let pathData = 'M 50 50';
+            layers.forEach((layer, index) => {
+                const rect = layer.getBoundingClientRect();
+                const containerRect = document.querySelector('.spiral-container').getBoundingClientRect();
+                const y = rect.top - containerRect.top + rect.height / 2;
+                const x = 50 + Math.sin(index * 0.8) * 30;
+                pathData += ` L ${x} ${y}`;
+            });
+            
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path.setAttribute('d', pathData);
+            path.setAttribute('stroke', 'url(#spiralGradient)');
+            path.setAttribute('stroke-width', '2');
+            path.setAttribute('fill', 'none');
+            path.setAttribute('opacity', '0.3');
+            
+            svg.innerHTML = svg.innerHTML; // Keep gradient def
+            svg.appendChild(path);
+        }
+
+        // Initialize spiral on load and resize
+        window.addEventListener('load', drawSpiral);
+        window.addEventListener('resize', drawSpiral);
+
+        // Add floating animation delays for emojis
+        document.querySelectorAll('.layer-emoji').forEach((emoji, index) => {
+            emoji.style.animationDelay = `${index * 0.5}s`;
+        });
+    </script>
+</body>
+</html>
